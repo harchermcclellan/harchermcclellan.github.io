@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience — Haley Archer-McClellan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #f4f0e8;
+      --ink:     #1a1612;
+      --rust:    #c0491a;
+      --gold:    #b89c5e;
+      --muted:   #8a8070;
+      --border:  rgba(26,22,18,.12);
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --mono:    'DM Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── Custom cursor ── */
+    .cursor-dot {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      width: 8px; height: 8px;
+      background: var(--rust);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%,-50%);
+      transition: transform .1s ease, background .3s ease;
+    }
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; z-index: 9998;
+      width: 32px; height: 32px;
+      border: 1px solid var(--rust);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%,-50%);
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), width .3s, height .3s, opacity .3s;
+      opacity: .5;
+    }
+    body:hover .cursor-ring { opacity: 1; }
+
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* ── Layout helpers ── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px;
+      background: rgba(244,240,232,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown .8s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+    .nav-logo { font-size: .75rem; font-family: var(--mono); letter-spacing: .15em; color: var(--muted); text-decoration: none; }
+    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: var(--mono); font-size: .7rem; letter-spacing: .12em;
+      text-transform: uppercase; text-decoration: none; color: var(--ink);
+      opacity: .55; transition: opacity .25s, color .25s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--rust); }
+    .nav-links .btn-small {
+      opacity: 1;
+      padding: 8px 18px;
+      border: 1px solid var(--ink);
+      transition: background .3s, color .3s;
+    }
+    .nav-links .btn-small:hover {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 60vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 140px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-line {
+      position: absolute; top: 0; right: 180px; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 24px;
+      animation: fadeUp .8s .3s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .hero-title {
+      font-size: clamp(56px, 8vw, 110px);
+      font-weight: 300; line-height: .95; letter-spacing: -.02em;
+      animation: fadeUp .8s .45s cubic-bezier(.2,.8,.2,1) both;
+      margin-bottom: 32px;
+    }
+    .hero-title em { font-style: italic; color: var(--rust); }
+    .hero-subtitle {
+      font-size: clamp(18px, 2vw, 24px); font-weight: 300;
+      color: var(--muted); max-width: 600px;
+      animation: fadeUp .8s .6s cubic-bezier(.2,.8,.2,1) both;
+      margin-bottom: 48px;
+    }
+    .hero-stats {
+      display: flex; gap: 64px;
+      animation: fadeUp .8s .75s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num { font-size: 2.5rem; font-weight: 300; color: var(--rust); line-height: 1; }
+    .stat-label { font-family: var(--mono); font-size: .65rem; letter-spacing: .15em; color: var(--muted); text-transform: uppercase; }
+    @keyframes fadeUp { from { transform: translateY(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+    /* ── TIMELINE ── */
+    #timeline {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .timeline-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 80px;
+    }
+    .timeline-header h2 { font-size: clamp(36px,4vw,56px); font-weight: 300; }
+    .filter-pills {
+      display: flex; gap: 12px;
+    }
+    .filter-pill {
+      font-family: var(--mono); font-size: .65rem; letter-spacing: .1em;
+      padding: 8px 18px; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); cursor: pointer;
+      transition: border-color .25s, background .25s, color .25s;
+    }
+    .filter-pill:hover { border-color: var(--ink); color: var(--ink); }
+    .filter-pill.active { border-color: var(--rust); background: var(--rust); color: var(--cream); }
+
+    .timeline-wrapper {
+      position: relative;
+      padding-left: 80px;
+    }
+    .timeline-spine {
+      position: absolute; left: 40px; top: 24px; bottom: 24px;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 80px;
+      opacity: 1;
+      transition: opacity .4s, max-height .4s, padding .4s;
+      max-height: 2000px;
+    }
+    .timeline-item.hidden {
+      opacity: 0;
+      max-height: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+    .timeline-dot {
+      position: absolute; left: -44px; top: 24px;
+      width: 12px; height: 12px;
+      background: var(--cream);
+      border: 2px solid var(--rust);
+      border-radius: 50%;
+      z-index: 2;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 8px rgba(192,73,26,.1);
+    }
+    .timeline-card {
+      background: rgba(255,255,255,.4);
+      border: 1px solid var(--border);
+      padding: 40px;
+      cursor: pointer;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      position: relative;
+    }
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,22,18,.08);
+      border-color: rgba(26,22,18,.2);
+    }
+    .timeline-card::before {
+      content: ''; position: absolute;
+      left: -80px; top: 28px;
+      width: 80px; height: 1px;
+      background: var(--border);
+    }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: start;
+      margin-bottom: 16px;
+    }
+    .card-title-group { flex: 1; }
+    .card-role {
+      font-size: 1.4rem; font-weight: 400; margin-bottom: 6px;
+      transition: color .3s;
+    }
+    .timeline-card:hover .card-role { color: var(--rust); }
+    .card-company {
+      font-family: var(--mono); font-size: .75rem; letter-spacing: .12em;
+      color: var(--rust); text-transform: uppercase;
+    }
+    .card-date {
+      font-family: var(--mono); font-size: .65rem; letter-spacing: .12em;
+      color: var(--muted); white-space: nowrap;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+    }
+    .card-desc {
+      font-size: 1rem; color: var(--muted); line-height: 1.7;
+      font-weight: 300; margin-bottom: 24px;
+    }
+    .card-highlights {
+      margin-bottom: 24px;
+    }
+    .card-highlights ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .card-highlights li {
+      font-size: .95rem; color: var(--ink); padding-left: 24px;
+      position: relative; line-height: 1.6;
+    }
+    .card-highlights li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--rust); font-family: var(--mono);
+    }
+    .card-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .card-tag {
+      font-family: var(--mono); font-size: .6rem; letter-spacing: .08em;
+      padding: 4px 12px; border: 1px solid var(--border);
+      color: var(--muted); transition: border-color .25s, color .25s;
+    }
+    .timeline-card:hover .card-tag { border-color: var(--rust); color: var(--rust); }
+    .expand-icon {
+      position: absolute; bottom: 20px; right: 20px;
+      font-family: var(--mono); font-size: .65rem; letter-spacing: .15em;
+      color: var(--rust); opacity: 0;
+      transition: opacity .3s, transform .3s;
+    }
+    .timeline-card:hover .expand-icon {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 64px;
+    }
+    .skill-category {
+      padding: 32px;
+      background: rgba(255,255,255,.4);
+      border: 1px solid var(--border);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .skill-category:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(26,22,18,.06);
+    }
+    .skill-category-title {
+      font-size: 1.3rem; font-weight: 400; margin-bottom: 8px;
+    }
+    .skill-category-subtitle {
+      font-family: var(--mono); font-size: .65rem; letter-spacing: .12em;
+      color: var(--rust); margin-bottom: 24px; text-transform: uppercase;
+    }
+    .skill-list {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .skill-item {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .skill-name {
+      font-size: .9rem; color: var(--ink);
+    }
+    .skill-level {
+      display: flex; gap: 4px;
+    }
+    .skill-level-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--border);
+      transition: background .3s;
+    }
+    .skill-level-dot.filled { background: var(--rust); }
+
+    /* ── EDUCATION ── */
+    #education {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .education-grid {
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 80px; margin-top: 64px;
+    }
+    .section-label {
+      font-family: var(--mono); font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--muted); padding-top: 6px;
+    }
+    .edu-list {
+      display: flex; flex-direction: column; gap: 48px;
+    }
+    .edu-item {
+      padding: 32px;
+      background: rgba(255,255,255,.4);
+      border-left: 3px solid var(--rust);
+    }
+    .edu-degree {
+      font-size: 1.3rem; font-weight: 400; margin-bottom: 8px;
+    }
+    .edu-school {
+      font-family: var(--mono); font-size: .75rem; letter-spacing: .12em;
+      color: var(--rust); margin-bottom: 12px;
+    }
+    .edu-meta {
+      display: flex; gap: 24px; margin-bottom: 16px;
+      font-family: var(--mono); font-size: .65rem; letter-spacing: .1em;
+      color: var(--muted);
+    }
+    .edu-desc {
+      font-size: .95rem; color: var(--muted); line-height: 1.7;
+    }
+
+    /* ── DOWNLOAD ── */
+    #download {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .download-box {
+      max-width: 600px; margin: 0 auto;
+      padding: 64px 48px;
+      background: var(--ink);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .download-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 30%, rgba(192,73,26,.1) 100%);
+    }
+    .download-content { position: relative; z-index: 1; }
+    .download-icon {
+      font-size: 3rem; margin-bottom: 24px;
+      opacity: .3;
+    }
+    .download-title {
+      font-size: 2rem; font-weight: 300; margin-bottom: 16px;
+    }
+    .download-subtitle {
+      font-size: 1rem; color: rgba(244,240,232,.6);
+      margin-bottom: 40px; font-weight: 300;
+    }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--mono); font-size: .7rem; letter-spacing: .12em;
+      text-transform: uppercase; text-decoration: none;
+      padding: 16px 32px; border: 1px solid var(--cream);
+      color: var(--cream); background: transparent;
+      transition: background .3s, border-color .3s;
+    }
+    .btn-download:hover {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; color: var(--muted);
+    }
+    footer a { color: inherit; text-decoration: none; transition: color .25s; }
+    footer a:hover { color: var(--rust); }
+
+    /* ── REVEAL animations ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ── Modal ── */
+    .modal {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(26,22,18,.85);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .4s;
+      padding: 24px;
+    }
+    .modal.active { opacity: 1; pointer-events: all; }
+    .modal-content {
+      background: var(--cream);
+      max-width: 800px; width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 64px;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    }
+    .modal.active .modal-content { transform: none; }
+    .modal-close {
+      position: absolute; top: 24px; right: 24px;
+      font-family: var(--mono); font-size: 1.5rem;
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; transition: color .3s, transform .3s;
+    }
+    .modal-close:hover { color: var(--rust); transform: rotate(90deg); }
+    .modal-role { font-size: 2rem; font-weight: 400; margin-bottom: 12px; }
+    .modal-company { font-family: var(--mono); font-size: .8rem; letter-spacing: .12em; color: var(--rust); margin-bottom: 24px; }
+    .modal-section { margin-bottom: 32px; }
+    .modal-section h3 {
+      font-size: 1.2rem; font-weight: 400; margin-bottom: 16px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    }
+    .modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .modal-section li {
+      padding-left: 24px; position: relative; line-height: 1.6;
+    }
+    .modal-section li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--rust); font-family: var(--mono);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { gap: 20px; }
+      .nav-links .btn-small { display: none; }
+      #hero { padding: 120px 24px 60px; min-height: 50vh; }
+      .hero-line { display: none; }
+      .hero-stats { flex-direction: column; gap: 32px; }
+      .container { padding: 0 24px; }
+      .timeline-header { flex-direction: column; gap: 24px; }
+      .filter-pills { flex-wrap: wrap; }
+      .timeline-wrapper { padding-left: 40px; }
+      .timeline-spine { left: 20px; }
+      .timeline-dot { left: -24px; }
+      .timeline-card::before { left: -40px; width: 40px; }
+      .timeline-card { padding: 24px; }
+      .card-header { flex-direction: column; gap: 12px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .education-grid { grid-template-columns: 1fr; gap: 40px; }
+      .modal-content { padding: 40px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <a href="index.html" class="nav-logo">YN — Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="#download" class="btn-small">Download CV</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="hero-line"></div>
+    <p class="hero-eyebrow">Curriculum Vitae</p>
+    <h1 class="hero-title">Professional <em>Journey</em></h1>
+    <p class="hero-subtitle">
+      Eight years of building digital products across startups and scale-ups,
+      with a focus on user-centered design and technical excellence.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">8+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Projects Shipped</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Companies</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Timeline ── -->
+  <section id="timeline">
+    <div class="container">
+      <div class="timeline-header reveal">
+        <h2>Work History</h2>
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="engineering">Engineering</button>
+          <button class="filter-pill" data-filter="design">Design</button>
+          <button class="filter-pill" data-filter="leadership">Leadership</button>
+        </div>
+      </div>
+
+      <div class="timeline-wrapper">
+        <div class="timeline-spine"></div>
+
+        <div class="timeline-item reveal" data-category="engineering leadership">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card" data-role="senior-eng">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3 class="card-role">Senior Software Engineer</h3>
+                <p class="card-company">Acme Corporation</p>
+              </div>
+              <span class="card-date">2023 — Present</span>
+            </div>
+            <p class="card-desc">
+              Summary placeholder
+            </p>
+            <div class="card-highlights">
+              <ul>
+                <li>Highlight placeholder</li>
+              </ul>
+            </div>
+            <div class="card-tags">
+              <span class="card-tag">React</span>
+              <span class="card-tag">TypeScript</span>
+              <span class="card-tag">Next.js</span>
+              <span class="card-tag">GraphQL</span>
+              <span class="card-tag">AWS</span>
+            </div>
+            <span class="expand-icon">View details →</span>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-1" data-category="engineering">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card" data-role="fullstack-dev">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3 class="card-role">Full Stack Developer</h3>
+                <p class="card-company">StartupXYZ</p>
+              </div>
+              <span class="card-date">2021 — 2023</span>
+            </div>
+            <p class="card-desc">Placeholder.
+            </p>
+            <div class="card-highlights">
+              <ul>
+                <li>Detail placeholder</li>
+              </ul>
+            </div>
+            <div class="card-tags">
+              <span class="card-tag">Node.js</span>
+              <span class="card-tag">React</span>
+              <span class="card-tag">PostgreSQL</span>
+              <span class="card-tag">Redis</span>
+              <span class="card-tag">Docker</span>
+            </div>
+            <span class="expand-icon">View details →</span>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="reveal" style="font-size: clamp(36px,4vw,56px); font-weight: 300; margin-bottom: 24px;">Core Competencies</h2>
+      <p class="reveal" style="font-size: 1.1rem; color: var(--muted); max-width: 600px; font-weight: 300;">
+        A comprehensive skill set developed through hands-on experience across the full stack.
+      </p>
+
+      <div class="skills-grid">
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Frontend Development</h3>
+          <p class="skill-category-subtitle">UI/UX Implementation</p>
+          <div class="skill-list">
+
+            
+            <div class="skill-item">
+              <span class="skill-name">React / Next.js</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">TypeScript</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">CSS / Tailwind / Styled Components</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Vue.js</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal reveal-delay-1">
+          <h3 class="skill-category-title">Backend & APIs</h3>
+          <p class="skill-category-subtitle">Server-Side Development</p>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Node.js / Express</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">PostgreSQL / MongoDB</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">GraphQL / REST</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal reveal-delay-2">
+          <h3 class="skill-category-title">DevOps & Tools</h3>
+          <p class="skill-category-subtitle">Infrastructure & Deployment</p>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Git / GitHub</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Docker / Kubernetes</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">AWS / Vercel</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">CI/CD Pipelines</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal reveal-delay-3">
+          <h3 class="skill-category-title">Design & UX</h3>
+          <p class="skill-category-subtitle">Visual Design & Prototyping</p>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Figma</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Design Systems</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Prototyping / Animation</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">User Research</span>
+              <div class="skill-level">
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot filled"></span>
+                <span class="skill-level-dot"></span>
+                <span class="skill-level-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Education ── -->
+  <section id="education">
+    <div class="container">
+      <div class="education-grid">
+        <div>
+          <p class="section-label reveal">Education</p>
+        </div>
+        <div class="edu-list">
+          <div class="edu-item reveal">
+            <h3 class="edu-degree">Bachelor of Science in Marketing Analytics</h3>
+            <p class="edu-school">University of Texas - Austin</p>
+            <div class="edu-meta">
+              <span>2020 — 2021</span>
+            </div>
+            <p class="edu-desc">
+              Coursework in data visualization, brand management, consumer psychology, statistics, and finance.
+            </p>
+          </div>
+
+          <div class="edu-item reveal reveal-delay-1">
+          <div class="edu-item reveal">
+            <h3 class="edu-degree">Bachelor of Science in Computer Science</h3>
+            <p class="edu-school">Washington & Lee University</p>
+            <div class="edu-meta">
+              <span>2011 — 2015</span>
+              <span>Minor in Mathematics</span>
+            </div>
+            <p class="edu-desc">
+              Placeholder description
+            </p>
+          </div>
+
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Download CV ── -->
+  <section id="download">
+    <div class="container">
+      <div class="download-box reveal">
+        <div class="download-content">
+          <div class="download-icon">↓</div>
+          <h2 class="download-title">Download Full CV</h2>
+          <p class="download-subtitle">
+            Get a detailed PDF version with complete project descriptions, references, and contact information.
+          </p>
+          <a href="/resume.pdf" class="btn-download" download>
+            Request full CV
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <span>© 2026 Haley Archer-McClellan</span>
+    <a href="index.html">← Back to Portfolio</a>
+  </footer>
+
+  <!-- ── Modal for expanded role details ── -->
+  <div class="modal" id="roleModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalBody">
+        <!-- Content inserted via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Custom cursor
+    const dot  = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      rx += (mx - rx) * .15; ry += (my - ry) * .15;
+      dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a, button, .timeline-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; dot.style.transform = 'translate(-50%,-50%) scale(0)'; });
+      el.addEventListener('mouseleave', () => { ring.style.width = '32px'; ring.style.height = '32px'; dot.style.transform = 'translate(-50%,-50%) scale(1)'; });
+    });
+
+    // ── Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Filter pills
+    const pills = document.querySelectorAll('.filter-pill');
+    const items = document.querySelectorAll('.timeline-item');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const filter = pill.dataset.filter;
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.category.includes(filter)) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // ── Modal for role details
+    const modal = document.getElementById('roleModal');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    const roleDetails = {
+      'senior-eng': {
+        role: 'Senior Software Engineer',
+        company: 'Acme Corporation',
+        date: '2023 — Present',
+        overview: 'Leading front-end architecture and mentoring junior developers while driving major performance improvements across the platform.',
+        responsibilities: [
+          'Architect and maintain design system with 80+ reusable components',
+          'Lead weekly code reviews and establish engineering best practices',
+          'Collaborate with product and design teams on roadmap planning',
+          'Optimize application performance using React profiling tools',
+          'Conduct technical interviews and mentor 3 junior engineers'
+        ],
+        achievements: [
+          'Reduced Core Web Vitals LCP from 4.2s to 1.8s through lazy loading and image optimization',
+          'Implemented automated testing suite covering 85% of codebase',
+          'Migrated legacy class components to modern hooks-based architecture',
+          'Led migration from Create React App to Next.js, improving SEO and performance'
+        ],
+        tools: ['React', 'Next.js', 'TypeScript', 'GraphQL', 'Jest', 'Cypress', 'AWS', 'Docker']
+      },
+      'fullstack-dev': {
+        role: 'Full Stack Developer',
+        company: 'StartupXYZ',
+        date: '2021 — 2023',
+        overview: 'Core founding team member responsible for building the entire product infrastructure from zero to launch.',
+        responsibilities: [
+          'Built entire frontend application using React and TypeScript',
+          'Designed and implemented RESTful API with Node.js and Express',
+          'Created PostgreSQL database schema and optimized queries',
+          'Set up CI/CD pipeline with automated testing and deployment',
+          'Implemented real-time features using WebSockets'
+        ],
+        achievements: [
+          'Launched MVP in 3 months that secured $2M in seed funding',
+          'Scaled platform to handle 10,000+ concurrent users',
+          'Achieved 99.9% uptime over 18 months of operation',
+          'Built admin dashboard reducing customer support time by 50%'
+        ],
+        tools: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'WebSockets', 'Docker', 'DigitalOcean']
+      },
+      'design-eng': {
+        role: 'Design Engineer',
+        company: 'Design Studio Co.',
+        date: '2020 — 2021',
+        overview: 'Bridged the gap between design and engineering teams, focusing on pixel-perfect implementations and interactive prototypes.',
+        responsibilities: [
+          'Translate Figma designs into production-ready React components',
+          'Build and maintain shared component library using Storybook',
+          'Create interactive prototypes for user testing',
+          'Collaborate with designers on feasibility and best practices',
+          'Ensure WCAG 2.1 AA accessibility compliance'
+        ],
+        achievements: [
+          'Built component library adopted across 8 client projects',
+          'Reduced design-to-development handoff time by 60%',
+          'Implemented automated visual regression testing',
+          'Created animation library for smooth micro-interactions'
+        ],
+        tools: ['React', 'Figma', 'Storybook', 'Framer Motion', 'Styled Components', 'Chromatic']
+      },
+      'frontend-dev': {
+        role: 'Frontend Developer',
+        company: 'Digital Agency LLC',
+        date: '2018 — 2020',
+        overview: 'Developed responsive websites and web applications for diverse clients across various industries.',
+        responsibilities: [
+          'Build responsive websites from design mockups',
+          'Integrate third-party APIs and services',
+          'Optimize performance and Core Web Vitals scores',
+          'Implement SEO best practices',
+          'Maintain and update client websites'
+        ],
+        achievements: [
+          'Delivered 20+ projects on time and within budget',
+          'Improved average Lighthouse scores from 65 to 88',
+          'Implemented headless CMS solutions for 5 clients',
+          'Established front-end coding standards for agency'
+        ],
+        tools: ['Vue.js', 'JavaScript', 'HTML/CSS', 'Webpack', 'SCSS', 'WordPress', 'Shopify']
+      },
+      'intern': {
+        role: 'Software Engineering Intern',
+        company: 'Tech Corp',
+        date: 'Summer 2017',
+        overview: 'Summer internship focused on modernizing legacy codebase and improving mobile performance.',
+        responsibilities: [
+          'Refactor jQuery codebase to React components',
+          'Implement responsive design patterns',
+          'Optimize mobile performance',
+          'Write unit tests for new components',
+          'Participate in agile development process'
+        ],
+        achievements: [
+          'Migrated 15 legacy pages to modern React',
+          'Reduced mobile load time by 35%',
+          'Implemented lazy loading for images and components'
+        ],
+        tools: ['React', 'JavaScript', 'Jest', 'REST APIs', 'Git']
+      }
+    };
+
+    document.querySelectorAll('.timeline-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const roleKey = card.dataset.role;
+        const data = roleDetails[roleKey];
+        if (!data) return;
+
+        modalBody.innerHTML = `
+          <h2 class="modal-role">${data.role}</h2>
+          <p class="modal-company">${data.company} · ${data.date}</p>
+          
+          <div class="modal-section">
+            <h3>Overview</h3>
+            <p style="line-height: 1.7; color: var(--muted);">${data.overview}</p>
+          </div>
+
+          <div class="modal-section">
+            <h3>Key Responsibilities</h3>
+            <ul>
+              ${data.responsibilities.map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3>Notable Achievements</h3>
+            <ul>
+              ${data.achievements.map(a => `<li>${a}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3>Technologies Used</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+              ${data.tools.map(t => `<span class="card-tag">${t}</span>`).join('')}
+            </div>
+          </div>
+        `;
+
+        modal.classList.add('active');
+      });
+    });
+
+    modalClose.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
