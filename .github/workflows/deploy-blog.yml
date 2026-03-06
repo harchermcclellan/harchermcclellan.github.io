@@ -1,4 +1,4 @@
-name: Deploy Jekyll Blog
+name: Deploy Site
 
 on:
   push:
@@ -28,16 +28,17 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: Copy main site into _site
+      - name: Assemble full site
         run: |
-          cp index.html blog/_site/index.html.bak  # don't overwrite blog's index
-          cp index.html blog/_site/home.html
-          cp experience.html blog/_site/experience.html
+          mkdir -p _deploy/blog
+          cp -r blog/_site/. _deploy/blog/
+          cp index.html _deploy/index.html
+          cp experience.html _deploy/experience.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./blog/_site
+          path: ./_deploy
 
   deploy:
     environment:
