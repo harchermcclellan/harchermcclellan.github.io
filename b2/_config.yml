@@ -14,6 +14,15 @@ title:		           "Millennial"
 description:	       "a minimalist Jekyll theme for running a blog or publication"
 author:              "Paul Le"
 
+# title: Haley Archer-McClellan
+# email: hirehaleymcclellan@gmail.com
+# description: >- # this means to ignore newlines until "baseurl:"
+#   TBD
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "hamcclellan.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+# twitter_username: jekyllrb
+github_username:  hamcclellan
+
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
 #feed:
 #  path: rss-feed.xml
