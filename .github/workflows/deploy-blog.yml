@@ -15,10 +15,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: "3.3"
           working-directory: ./blog
           bundler-cache: true
 
