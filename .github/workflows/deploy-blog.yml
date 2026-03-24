@@ -34,6 +34,7 @@ jobs:
           cp -r blog/_site/. _deploy/blog/
           cp index.html _deploy/index.html
           cp experience.html _deploy/experience.html
+          cp projects.html _deploy/projects.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
