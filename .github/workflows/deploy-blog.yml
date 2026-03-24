@@ -35,6 +35,7 @@ jobs:
           cp index.html _deploy/index.html
           cp experience.html _deploy/experience.html
           cp projects.html _deploy/projects.html
+          cp -r assets _deploy/assets
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
