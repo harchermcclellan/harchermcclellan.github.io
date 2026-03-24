@@ -14,9 +14,9 @@
     :root {
       --cream:   #f4f0e8;
       --ink:     #1a1612;
-      --rust:    #c0491a;
-      --gold:    #b89c5e;
-      --muted:   #8a8070;
+      --coral:    #EB5966;
+      --peach:    #F5D6D0;
+      --muted:   #4E1A28;
       --border:  rgba(26,22,18,.12);
       --serif:   'Cormorant Garamond', Georgia, serif;
       --mono:    'DM Mono', 'Courier New', monospace;
@@ -38,7 +38,7 @@
     .cursor-dot {
       position: fixed; top: 0; left: 0; z-index: 9999;
       width: 8px; height: 8px;
-      background: var(--rust);
+      background: var(--coral);
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%,-50%);
@@ -47,7 +47,7 @@
     .cursor-ring {
       position: fixed; top: 0; left: 0; z-index: 9998;
       width: 32px; height: 32px;
-      border: 1px solid var(--rust);
+      border: 1px solid var(--coral);
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%,-50%);
@@ -86,7 +86,7 @@
       text-transform: uppercase; text-decoration: none; color: var(--ink);
       opacity: .55; transition: opacity .25s, color .25s;
     }
-    .nav-links a:hover { opacity: 1; color: var(--rust); }
+    .nav-links a:hover { opacity: 1; color: var(--coral); }
 
     /* ── HERO ── */
     #hero {
@@ -107,7 +107,7 @@
     }
     .hero-eyebrow {
       font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
-      text-transform: uppercase; color: var(--rust); margin-bottom: 24px;
+      text-transform: uppercase; color: var(--coral); margin-bottom: 24px;
       animation: fadeUp .8s .3s cubic-bezier(.2,.8,.2,1) both;
     }
     .hero-name {
@@ -115,7 +115,7 @@
       font-weight: 300; line-height: .95; letter-spacing: -.02em;
       animation: fadeUp .8s .45s cubic-bezier(.2,.8,.2,1) both;
     }
-    .hero-name em { font-style: italic; color: var(--rust); }
+    .hero-name em { font-style: italic; color: var(--coral); }
     .hero-tagline {
       font-size: clamp(16px, 1.8vw, 22px); font-weight: 300;
       color: var(--muted); margin-top: 32px; max-width: 480px;
@@ -178,7 +178,7 @@
       border: 1px solid var(--border); padding: 6px 14px; color: var(--muted);
       transition: border-color .25s, color .25s;
     }
-    .skill-tag:hover { border-color: var(--rust); color: var(--rust); }
+    .skill-tag:hover { border-color: var(--coral); color: var(--coral); }
 
     /* ── WORK ── */
     #work {
@@ -236,7 +236,7 @@
     .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
     .exp-company { font-size: 1.15rem; font-weight: 400; }
     .exp-date { font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; color: var(--muted); }
-    .exp-role { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; color: var(--rust); }
+    .exp-role { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; color: var(--coral); }
     .exp-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; font-weight: 300;  margin-bottom: 12px; }
 
     /* ── CONTACT ── */
@@ -250,21 +250,21 @@
       font-size: clamp(48px, 6vw, 96px); font-weight: 300; line-height: 1.05;
       letter-spacing: -.02em; margin-bottom: 48px;
     }
-    .contact-headline em { font-style: italic; color: var(--rust); }
+    .contact-headline em { font-style: italic; color: var(--coral); }
     .contact-email {
       display: inline-block; font-family: var(--mono); font-size: 1rem;
       letter-spacing: .05em; color: var(--ink); text-decoration: none;
       border-bottom: 1px solid var(--ink); padding-bottom: 4px;
       transition: color .25s, border-color .25s;
     }
-    .contact-email:hover { color: var(--rust); border-color: var(--rust); }
+    .contact-email:hover { color: var(--coral); border-color: var(--coral); }
     .social-links { display: flex; justify-content: center; gap: 32px; margin-top: 64px; }
     .social-links a {
       font-family: var(--mono); font-size: .65rem; letter-spacing: .15em;
       text-transform: uppercase; text-decoration: none; color: var(--muted);
       transition: color .25s;
     }
-    .social-links a:hover { color: var(--rust); }
+    .social-links a:hover { color: var(--coral); }
 
     /* ── FOOTER ── */
     footer {
@@ -301,15 +301,14 @@
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- ── Navigation ── -->
   <nav>
-    <span class="nav-logo">Haley — Portfolio</span>
+    <a href="index.html" class="nav-logo">HAM — Portfolio</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-      <!-- <li><a href="#experience">Experience</a></li> -->
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="/experience.html">CV</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="mailto:hirehaleymcclellan@gmail.com" class="btn-small">Request full CV</a></li>
     </ul>
   </nav>
 
@@ -479,8 +478,7 @@
       <div class="social-links reveal reveal-delay-1">
         <a href="https://github.com/harchermcclellan" target="_blank">GitHub</a>
         <a href="https://linkedin.com/in/harchermcclellan" target="_blank">LinkedIn</a>
-        <!-- <a href="https://twitter.com/yourusername" target="_blank">Twitter / X</a> -->
-        <!-- <a href="/resume.pdf" target="_blank">Résumé ↗</a> -->
+      
       </div>
     </div>
   </section>
@@ -522,7 +520,7 @@
       sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
       navLinks.forEach(a => {
         a.style.opacity = a.getAttribute('href') === '#' + current ? '1' : '.55';
-        a.style.color   = a.getAttribute('href') === '#' + current ? 'var(--rust)' : '';
+        a.style.color   = a.getAttribute('href') === '#' + current ? 'var(--coral)' : '';
       });
     }, { passive: true });
   </script>
