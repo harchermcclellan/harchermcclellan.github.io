@@ -4,6 +4,7 @@ title: Haley Archer-McClellan
 author: Haley Archer-McClellan
 description: "A Blog About Nothing"
 url: https://harchermcclellan.github.io/blog
+baseurl: "/blog"
 highlighter: rouge
 permalink: /posts/:title/
 markdown: kramdown
