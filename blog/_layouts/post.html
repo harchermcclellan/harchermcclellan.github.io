@@ -1,0 +1,30 @@
+---
+layout: default
+author: Haley Archer-McClellan
+---
+
+<div class='post'>
+  <h1 class='title'>{{ page.title }}</h2>
+  <p class='meta'>{{ page.date | date_to_string }}</p>
+
+
+  <div class='content'>
+{{ content | toc }}
+  </div>
+
+  {%- if page.categories -%}
+    <div class="categories-links">
+      Tags:
+      {%- for category in page.categories -%}
+      <a href="/categories/{{ category }}/" class='category'> {{ category }} </a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div id='post-footer'>
+    {% include bio.html %}
+    {% include post_nav.html %}
+  </div>
+
+  {% include comments.html %}
+</div>
