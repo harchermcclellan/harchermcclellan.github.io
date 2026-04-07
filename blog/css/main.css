@@ -175,6 +175,7 @@ h1, h2, h3, h4, h5, h6, strong { color: var(--bold-text-color); }
   font-size: 0.9em;
   line-height: 1.5em;
   overflow: auto;
+  background-color:#F5D6D0;
 }
 
 .site .post .content blockquote {
