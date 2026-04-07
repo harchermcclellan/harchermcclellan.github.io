@@ -1,17 +1,12 @@
 
 name: Haley Archer-McClellan
 title: Haley Archer-McClellan
-author: Haley Archer-McClellan
 description: "A Blog About Nothing"
 url: https://harchermcclellan.github.io/blog
 baseurl: "/blog"
-highlighter: rouge
 permalink: /posts/:title/
 markdown: kramdown
 repository: "harchermcclellan/harchermcclellan.github.io"
-
-
-theme_options:
 
 feed:
   categories:
@@ -22,15 +17,3 @@ plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-toc
-
-
-toc:
-  min_level: 1
-  max_level: 6
-  ordered_list: false
-  no_toc_section_class: no_toc_section
-  list_id: toc
-  list_class: section-nav
-  sublist_class: ''
-  item_class: toc-entry
-  item_prefix: toc-

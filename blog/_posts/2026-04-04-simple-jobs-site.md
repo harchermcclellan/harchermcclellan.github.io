@@ -7,7 +7,10 @@ categories:
     - serpAPI
 toc: true
 ---
-
+Build a simple job search app using SerpAPI, Postgres, and Python.
+[Preview the demo](https://hamcclellan.pythonanywhere.com/)
+[Jump to the Git repo](https://github.com/harchermcclellan/job-finder)
+![Project screen grab](/assets/projects/Job-finder.png)
 
 ## Getting Started
 
@@ -707,4 +710,4 @@ See the live app [here](https://hamcclellan.pythonanywhere.com/)
   - Finally, a fun little addition: set the spinner for the Loading indicator to be a moon emoji if the page is in Night Mode.
 
 [repo-link]: https://github.com/harchermcclellan/job-finder
-[limited-live-demo]: google.com
+[limited-live-demo]: https://hamcclellan.pythonanywhere.com/
