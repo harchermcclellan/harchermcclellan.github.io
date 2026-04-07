@@ -24,7 +24,7 @@ Have more experience? Cut to the chase [here](/blog/posts/simple-jobs-site).
 To complete this project, you'll need Python set up, possibly in a virtual environment.
 
 To start, set up a directory called job-finder wherever you like to build projects (for me, that's `/Desktop/dev`, so I would start with `cd /Desktop/dev`):
-```
+```bash
 mkdir job-finder
 cd job-finder
 python3.12 -m venv ./.venv
@@ -41,7 +41,7 @@ Finally, we want to activate our virtual environment so we can install some pack
 
 Now that we have our virtual environment set up, we want to install a few tools we'll be using along the way:
 
-```
+```bash
 pip install flask
 pip install dotenv
 pip install serpapi
@@ -58,7 +58,7 @@ We won't use these tools as we're just getting started, but we'll need them soon
 ## Getting online
 
 We want to create a basic homepage within a new folder:
-```
+```bash
 mkdir templates
 touch index.html
 touch app.py
@@ -68,7 +68,7 @@ touch app.py
 
 For now, let's put just the basics in our html:
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +85,7 @@ Hello
 ```
 
 and in our Python file:
-```
+```python
 if __name__ == "__main__":
     app.run(debug=True)
 
@@ -136,7 +136,7 @@ We'll need a `GET` method that renders the webpage, a way to run the app locally
 ### Running the app from the terminal
 - At the bottom of your app.py file, add the following:
 
-```
+```python
 app = Flask(__name__)
 
 if __name__ == "__main__":
@@ -148,7 +148,7 @@ if __name__ == "__main__":
 ### Add a `GET` method
 - At the bottom of the app.py file, add the following:
 
-```
+```python
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -162,7 +162,7 @@ This tells the app that when the root is hit (when we access "/" from our URL), 
 #### Create a placeholder response
 - Let's start by setting up sample data for our POST method to return. The following is data that a SerpApi call returned for a search for "designer" jobs in Boston, MA, and it'll make great basic data for our app to display in demo mode:
 
-```
+```json
 "jobs_results": [
             {
             "title": "Graphic Designer",
@@ -394,7 +394,7 @@ This tells the app that when the root is hit (when we access "/" from our URL), 
 We'll want to leave this at the very bottom of our app.py.
 
 Now, below your `index()` function, add a POST method:
-```
+```python
 @app.route("/search", methods=["POST"])
 def search():
     return jsonify(get_placeholder())
@@ -405,7 +405,7 @@ def search():
 So we can see that our site is displaying data properly when received in the expected format.
 
 Now let's change `search()` to  take our inputs
-```
+```python
     data      = request.get_json()
     titles    = data.get("title", "")
     location  = data.get("location", "").strip()
@@ -433,7 +433,7 @@ Run your site locally to confirm it works as expected: python app.py
 #### Get real data
 Now to the exciting part: actually requesting (and displaying) real data. We want to have a new function, search_jobs, that retrieves our jobs data using SerpApi.
 
-```
+```python
 def search_jobs(title: str, location: str, work_type: str, salary: str) -> list[dict]:
     """
     Return a list of job dicts. Each dict should have:
@@ -477,7 +477,7 @@ If you aren't familiar with this syntax in Python, it specifies the types of our
 
 We also want a helper function, get_extended_results, that will get details like salary, schedule type (full-time, part-time, internship, etc), when the job was posted, and relevant benefits:
 
-```
+```python
 def get_extended_details(result, details_list):
   
     details_output = {}
@@ -502,7 +502,7 @@ Anyway, to solve for this, I added the tag input design pattern so you can searc
 ### Changes to app.py
 
 Modify search() to work for several roles:
-```
+```python
 @app.route("/search", methods=["POST"])
 def search():
     data      = request.get_json()
@@ -539,7 +539,7 @@ We run the app again locally to make sure things work as expected
 SerpApi has monthly usage limits, and I'm trying to avoid hitting them, so let's write our search responses to a database for reference when searching. Let's say we only need fresh data for a search method every 24 hours.
 
 Create a new file db.py:
-```
+```python
 import os
 import json
 import hashlib
@@ -582,7 +582,7 @@ def set_cached(cache_key: str, role: str, location: str, results: list):
 ```
 
 Now we have a handful of functions at our disposal. We can create a connection using the database URL in the user's bash profile, set a search response to be cached, and retrieve cached results. To use these functions, we'll return to app.py and edit the for loop in `search()`:
-```
+```python
     for title in titles:
         cache_key = make_key(title, location, work_type, salary)
         cached = get_cached(cache_key)
@@ -604,14 +604,12 @@ So now we're retrieving the results if they exist in the cache and aren't outdat
 # Customizations I implemented
 ## Daytime mode
 As I already admitted, I didn't write our frontend code because I didn't want to. The default styling was pretty dark for me. I wanted a Daytime/Nighttime mode so users can toggle and choose a layout for themselves.
-```
-```
 
 ## Loading indication
 The app doesn't return results instantaneously, so it's nice to show the user that you're working on their request. 
 In our web client, at the very top of the search form, just inside the `<body>` tag, we add the following (I used the sun emoji as the loading spinner because every job search can use the help of a little sunshine):
 
-```
+```html
 <div class="loading-overlay" id="loadingOverlay">
   <div class="loading-sun">☀️</div>
   <div class="loading-text">Searching...</div>
@@ -619,7 +617,7 @@ In our web client, at the very top of the search form, just inside the `<body>` 
 ```
 
 Under Helpers, we add
-```
+```python
 function setLoading(on) {
   const btn = document.getElementById('searchBtn');
   const overlay = document.getElementById('loadingOverlay');
@@ -639,7 +637,7 @@ At the very end of doSearch, we add a finally block to `setLoading(false);`
 
 We also need to set styling for the overlay. In `style.css`:
 
-```
+```css
 /* empty / loading / error states */
 .list-state {
   padding: 28px 16px;
