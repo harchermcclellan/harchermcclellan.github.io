@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Simple Job Listings App with SerpAPI"
+title:  "Simple Job Listings App with SerpApi"
 date:   2026-04-01
 categories:
     - python
-    - serpAPI
+    - SerpApi
 toc: true
 ---
-Build a simple job search app using SerpAPI, Postgres, and Python.
+Build a simple job search app using SerpApi, Postgres, and Python.
 
 [Preview the demo](https://hamcclellan.pythonanywhere.com/)
 
@@ -95,10 +95,10 @@ This tells our site to run when we run it from the command line, and that when i
 
 
 ### Set up API and database access
-We're going to use SerpAPI to access google search results, and want to cache those search results to limit our API usage.
+We're going to use SerpApi to access google search results, and want to cache those search results to limit our API usage.
 
-- If necessary, create a SerpAPI account. Locate your API key:
-![API key in SerpAPI location](/blog/images/FindAPIkey.png)
+- If necessary, create a SerpApi account. Locate your API key:
+![API key in SerpApi location](/blog/images/FindAPIkey.png)
 In the next step, we'll refer to this as `APIKEY`
 - Create an account with a database provider. (I used [Supabase](https://supabase.com) because setup is easy and I'm comfortable using Postgres). Within your database provider, find your database connection string. We'll refer to this as `DB_CONN` in the next step
 
@@ -111,7 +111,7 @@ Determine whether you have a bashrc file configured yet:
     - As in the earlier steps, `touch` creates a file for us
     - Then, open the file. Run `open ~/.bashrc` again
 - To the end of the file, add two lines:
-  - `export SERP_API_KEY="{APIKEY}"` where `APIKEY` is the key from the above step. So, if your SerpAPI key was "baluga", you'd add `export SERP_API_KEY="baluga"`
+  - `export SERP_API_KEY="{APIKEY}"` where `APIKEY` is the key from the above step. So, if your SerpApi key was "baluga", you'd add `export SERP_API_KEY="baluga"`
   - `export DATABASE_URL="{DB_CONN}"` using `DB_CONN` from the step above
 - Save the file and close it.
 - Activate the bash profile:
@@ -156,7 +156,7 @@ This tells the app that when the root is hit (when we access "/" from our URL), 
 ### Add a `POST` method
 
 #### Create a placeholder response
-- Let's start by setting up sample data for our POST method to return. The following is data that a SerpAPI call returned for a search for "designer" jobs in Boston, MA, and it'll make great basic data for our app to display in demo mode:
+- Let's start by setting up sample data for our POST method to return. The following is data that a SerpApi call returned for a search for "designer" jobs in Boston, MA, and it'll make great basic data for our app to display in demo mode:
 
 ```
 "jobs_results": [
@@ -427,7 +427,7 @@ Normally, we'd want to just return directly from the `try` but we're going to wa
 Run your site locally to confirm it works as expected: python app.py
 
 #### Get real data
-Now to the exciting part: actually requesting (and displaying) real data. We want to have a new function, search_jobs, that retrieves our jobs data using SerpAPI.
+Now to the exciting part: actually requesting (and displaying) real data. We want to have a new function, search_jobs, that retrieves our jobs data using SerpApi.
 
 ```
 def search_jobs(title: str, location: str, work_type: str, salary: str) -> list[dict]:
@@ -532,7 +532,7 @@ We run the app again locally to make sure things work as expected
 
 ## Cache results
 
-SerpAPI has monthly usage limits, and I'm trying to avoid hitting them, so let's write our search responses to a database for reference when searching. Let's say we only need fresh data for a search method every 24 hours.
+SerpApi has monthly usage limits, and I'm trying to avoid hitting them, so let's write our search responses to a database for reference when searching. Let's say we only need fresh data for a search method every 24 hours.
 
 Create a new file db.py:
 ```
@@ -701,7 +701,7 @@ See the live app [here](https://hamcclellan.pythonanywhere.com/)
 # Future improvements
 
 - Adding salary and role types as search constraints
-  - The SerpAPI client search is somewhat bare - role type (hybrid/remote/in-person) and schedule type (full-time/part-time/internship) aren't their own parts of the query. We could refactor the search_jobs method to return objects and create additional Search methods to further filter results to meet those requirements.
+  - The SerpApi client search is somewhat bare - role type (hybrid/remote/in-person) and schedule type (full-time/part-time/internship) aren't their own parts of the query. We could refactor the search_jobs method to return objects and create additional Search methods to further filter results to meet those requirements.
 
 - Displaying results of several more specific searches in one place
   - Just as I want to see several types of roles, it's possible a user would want to see roles in multiple different locations conditional on the role itself. For an example, a college student might be open to a summer internship in one of five cities, or willing to work seasonal retail near their college town or hometown, but not be willing to relocate for a seasonal retail job.
