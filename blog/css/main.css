@@ -1,6 +1,6 @@
 :root {
   --background-color: #FFFAFA;
-  --bold-text-color: #ffbdaf;
+  --bold-text-color: var(--coral);
   --text-color: #010101;
   --main-link-color: #EB5966;
   --author-bio-border-color: #4E1A28;

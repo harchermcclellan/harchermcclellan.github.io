@@ -21,7 +21,6 @@
   {% endif %}
 
   <meta property="og:image" content="https://s3.amazonaws.com/nithinbekal.com/og/{{og_image}}" />
-<link rel="stylesheet" href="{{ '/css/blog-custom.css' | relative_url }}">
 
   <title>{{ page.title }}</title>
 
@@ -32,6 +31,7 @@
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
 <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/css/syntax.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/css/blog-custom.css' | relative_url }}">
   {%- if page.balloon_css -%}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/1.2.0/balloon.min.css">
   {%- endif -%}
@@ -41,13 +41,17 @@
 
 <body>
   <div class='container'>
-    <div class='header'>
-      <span class='site-title'><a href='/'>{{ site.name }}</a></span>
-      <span class='links align-right'>
-
-      </span>
-    </div>
-
+<div class='header'>
+  <span class='site-title'><a href='https://harchermcclellan.github.io/'>{{ site.name }}</a></span>
+  <span class='links align-right'>
+    <a href='https://harchermcclellan.github.io/'>Home</a>
+    <a href='https://harchermcclellan.github.io/#about'>About</a>
+    <a href='https://harchermcclellan.github.io/#contact'>Contact</a>
+    <a href='https://harchermcclellan.github.io/experience'>Experience</a>
+    <a href='https://harchermcclellan.github.io/projects'>Projects</a>
+    <a href='https://harchermcclellan.github.io/blog/'>Blog</a>
+  </span>
+</div>
     <main class='site'>
       {{ content }}
     </main>

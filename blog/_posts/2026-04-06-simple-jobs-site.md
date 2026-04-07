@@ -12,7 +12,8 @@ toc: true
 
 # Building a Job Listings App with SerpApi, Flask, and Postgres
 
-[Demo](https://hamcclellan.pythonanywhere.com/) | [Repo](https://github.com/harchermcclellan/job-finder)
+<a href="https://hamcclellan.pythonanywhere.com/" class="project-link">Demo →</a>
+<a href="https://github.com/harchermcclellan/job-finder" class="project-link secondary">Repo →</a>
 
 A simple Flask app that wraps SerpApi's Google Jobs engine, caches results in Postgres, and supports multi-title search via a tag input UI. The motivation: I'm job searching across multiple roles at once (full-time dev rel, contract-based e-commerce management, part-time retail styling for fun) and wanted a single feed instead of running three separate searches.
 

@@ -13,9 +13,8 @@ Designed for audiences people who have recently taken up writing software – ne
 
 Have more experience? Cut to the chase [here](/blog/posts/simple-jobs-site).
 
-[Preview the demo](https://hamcclellan.pythonanywhere.com/)
-
-[Jump to the Git repo](https://github.com/harchermcclellan/job-finder)
+<a href="https://hamcclellan.pythonanywhere.com/" class="project-link">Preview demo →</a>
+<a href="https://github.com/harchermcclellan/job-finder" class="project-link secondary">GitHub repo →</a>
 
 ![Project screen grab](/assets/projects/Job-finder.png)
 
