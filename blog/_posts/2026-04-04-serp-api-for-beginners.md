@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Simple Job Listings App with SerpApi"
+title:  "Build a Job Listings App with SerpApi (for beginners, sort of)"
 date:   2026-04-01
 categories:
     - python
@@ -8,6 +8,10 @@ categories:
 toc: true
 ---
 Build a simple job search app using SerpApi, Postgres, and Python.
+
+Designed for audiences people who have recently taken up writing software – new hobbies are cool and I try to explain in as much detail as possible.
+
+Have more experience? Cut to the chase [here](/blog/posts/simple-jobs-site).
 
 [Preview the demo](https://hamcclellan.pythonanywhere.com/)
 
