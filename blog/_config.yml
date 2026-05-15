@@ -11,7 +11,9 @@ repository: "harchermcclellan/harchermcclellan.github.io"
 feed:
   categories:
     - ruby
-
+theme_options:
+  google_analytics: GTM-P7964SVH
+  
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
